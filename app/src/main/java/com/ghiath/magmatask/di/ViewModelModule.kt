@@ -16,10 +16,14 @@
 
 package com.ghiath.kelshimall.di
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ghiath.kelshimall.viewModel.MagmaViewModelFactory
+import com.ghiath.magmatask.viewModel.AdViewModel
 import dagger.Binds
 import dagger.Module
+import dagger.multibindings.IntoMap
+import javax.inject.Singleton
 
 @Suppress("unused")
 @Module
@@ -35,11 +39,11 @@ abstract class ViewModelModule {
 //    @ViewModelKey(VerifyNumberViewModel::class)
 //    abstract fun bindVerifyNumberViewModel(verifyNumberViewModel: VerifyNumberViewModel): ViewModel
 //
-//    @Singleton
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(HomeFragViewModel::class)
-//    abstract fun bindHomeViewModel(homeViewModel: HomeFragViewModel): ViewModel
+    @Singleton
+    @Binds
+    @IntoMap
+    @ViewModelKey(AdViewModel::class)
+    abstract fun bindAdViewModel(adViewModel: AdViewModel): ViewModel
 
 
     @Binds

@@ -67,14 +67,14 @@ public class MagmaApplication extends Application implements HasActivityInjector
         super.onConfigurationChanged(newConfig);
     }
 
-    public Typeface getCairo_regular() {
-
-        if(cairo_regular==null)
-            cairo_regular= ResourcesCompat.getFont(this,
-                    R.font.cairo_regular);
-
-        return cairo_regular;
-    }
+//    public Typeface getCairo_regular() {
+//
+//        if(cairo_regular==null)
+//            cairo_regular= ResourcesCompat.getFont(this,
+//                    R.font.cairo_regular);
+//
+//        return cairo_regular;
+//    }
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);

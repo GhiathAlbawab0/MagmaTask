@@ -3,6 +3,7 @@ package com.ghiath.magmatask.di;
 import com.ghiath.kelshimall.di.AppModule;
 import com.ghiath.magmatask.MagmaApplication;
 import com.ghiath.magmatask.MainActivity;
+import com.ghiath.magmatask.SplashScreenActivity;
 import com.ghiath.magmatask.binding.BindingModule;
 
 import javax.inject.Singleton;
@@ -19,6 +20,7 @@ import dagger.android.AndroidInjectionModule;
 
 
         , MainActivity.ActivityModule.class
+        , SplashScreenActivity.ActivityModule.class
 
 })
  interface AppComponent {

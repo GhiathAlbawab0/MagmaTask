@@ -8,10 +8,13 @@ import java.util.List;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 @Dao
 public interface AdImageEntityDao extends BaseDao<AdImageEntity> {
+
 
 
 
@@ -21,8 +24,16 @@ public interface AdImageEntityDao extends BaseDao<AdImageEntity> {
     @Query("select * from AdImageEntity where AdId=:parentCategoryID")
     LiveData<List<AdImageEntity>> findAdImageEntitiesByParentId(String parentCategoryID);
 
-    @Query("select * from AdImageEntity where AdId=:parentCategoryID and imageStatusEnum=='PENDING'")
-    LiveData<List<AdImageEntity>> findPendingImageEntitiesByParentId(String parentCategoryID);
+    @Query("select count(*) from AdImageEntity where imageStatusEnum=='PENDING'")
+    LiveData<Integer> findPendingImageCount();
+
+    @Query("select count(*) from AdImageEntity where imageStatusEnum=='APPROVED'")
+    LiveData<Integer> findAPPROVEDImageCount();
+
+    @Query("select count(*) from AdImageEntity where imageStatusEnum=='REJECTED'")
+    LiveData<Integer> findREJECTEDImageCount();
+
+
 
 
 

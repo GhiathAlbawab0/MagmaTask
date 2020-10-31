@@ -112,7 +112,7 @@ dependencies {
     implementation 'pub.devrel:easypermissions:2.0.1'
 
     //google-api-client
-    implementation 'com.google.api-client:google-api-client:1.30.11'
+//    implementation 'com.google.api-client:google-api-client:1.30.11'
 
     //enable multidex
     def multidex_version = "2.0.1"

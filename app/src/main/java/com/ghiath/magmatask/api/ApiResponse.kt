@@ -17,6 +17,9 @@
 package com.ghiath.kelshimall.api
 
 
+import com.google.api.gax.paging.Page
+import com.google.cloud.storage.Blob
+import com.google.cloud.storage.Bucket
 import retrofit2.Response
 import retrofit2.http.Body
 import timber.log.Timber
@@ -35,24 +38,25 @@ sealed class ApiResponse<T> {
             )
         }
 
-        fun <T> create(response: Response<T>): ApiResponse<T> {
-            return if (response.isSuccessful) {
-                val body = response.body()
-                if (body == null || response.code() == 204) {
+        fun  create(response: Bucket,listCall : Page<Blob>): ApiResponse<Page<Blob>> {
+            return if (response.exists()) {
+                val body = listCall
+                if (body == null ) {
                     ApiEmptyResponse()
                 } else {
                     ApiSuccessResponse(
                         body = body,
-                        linkHeader = response.headers().get("link")
+                        linkHeader = null
                     )
                 }
             } else {
-                val msg = response.errorBody()?.string()
-                val errorMsg = if (msg.isNullOrEmpty()) {
-                    response.message()
-                } else {
-                    msg
-                }
+//                val msg = "Unknown Error"
+                val errorMsg ="Unknown Error"
+//                if (msg.isNullOrEmpty()) {
+//                    response.message()
+//                } else {
+//                    msg
+//                }
                 ApiErrorResponse(errorMsg ?: "unknown error")
             }
         }
